@@ -2,26 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+form input.input {
+  @apply block w-full py-3 border rounded-lg px-4 bg-gray-900 text-gray-300 border-gray-600;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+form input.input:focus {
+  @apply border-blue-300 ring-blue-300 outline-none ring ring-opacity-5;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+form button.button {
+  @apply w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg mt-6;
+}
+
+form button.button:hover {
+  @apply bg-blue-400;
+}
+form button.button:focus {
+  @apply outline-none ring ring-blue-300 ring-opacity-50 mt-6;
 }
