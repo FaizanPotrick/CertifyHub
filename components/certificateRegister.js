@@ -78,7 +78,7 @@ function certificateRegister({ GenerateOR }) {
               className="w-4 h-4 text-blue-600 rounded-md focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600"
             />
             <label
-              for="default-checkbox"
+              htmlFor="default-checkbox"
               className="ms-2 text-sm font-medium text-gray-300"
             >
               Do you have certificate number?
