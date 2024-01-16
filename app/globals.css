@@ -3,20 +3,9 @@
 @tailwind utilities;
 
 form input.input {
-  @apply block w-full py-3 border rounded-lg px-4 bg-gray-900 text-gray-300 border-gray-600;
+  @apply block w-full py-2 border rounded-lg px-4 bg-gray-800 border-gray-600 text-gray-300  placeholder-gray-400;
 }
 
 form input.input:focus {
-  @apply border-blue-300 ring-blue-300 outline-none ring ring-opacity-5;
-}
-
-form button.button {
-  @apply w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg mt-6;
-}
-
-form button.button:hover {
-  @apply bg-blue-400;
-}
-form button.button:focus {
-  @apply outline-none ring ring-blue-300 ring-opacity-50 mt-6;
+  @apply border-blue-300 ring-blue-300 outline-none ring ring-opacity-40;
 }
