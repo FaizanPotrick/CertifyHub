@@ -21,6 +21,7 @@ function hero() {
           name: res.name,
           sub_title: res.sub_title,
           date: res.date,
+          url: window?.location.href,
         })
       );
     } catch (err) {

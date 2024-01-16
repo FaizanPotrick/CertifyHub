@@ -5,7 +5,7 @@ import { setState, clearState } from "@/redux/features/certificate-slice";
 import { setAlert } from "@/redux/features/alert-slice";
 import { setModal } from "@/redux/features/modal-slice";
 
-function certificateRegister({ GenerateOR }) {
+function certificateRegister() {
   const dispatch = useAppDispatch();
   const certificate = useAppSelector((state) => state.certificate);
 
@@ -16,7 +16,6 @@ function certificateRegister({ GenerateOR }) {
         ? await addCertificateBasedOnUID(certificate)
         : await addCertificate(certificate);
       // console.log(res);
-      GenerateOR(res.certificate_number);
       dispatch(clearState());
       dispatch(
         setModal({
@@ -25,6 +24,7 @@ function certificateRegister({ GenerateOR }) {
           name: res.name,
           sub_title: res.sub_title,
           date: res.date,
+          url: window?.location.href,
         })
       );
     } catch (err) {
