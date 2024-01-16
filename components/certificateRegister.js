@@ -2,6 +2,7 @@ import React from "react";
 import { addCertificate, addCertificateBasedOnUID } from "@/lib/certificate";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { setState, clearState } from "@/redux/features/certificate-slice";
+import { setAlert } from "@/redux/features/alert-slice";
 
 function certificateRegister({ GenerateOR }) {
   const dispatch = useAppDispatch();
@@ -18,8 +19,14 @@ function certificateRegister({ GenerateOR }) {
       console.log(res);
       GenerateOR(res.certificate_number);
       dispatch(clearState());
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      dispatch(
+        setAlert({
+          type: "error",
+          id: new Date().getTime(),
+          msg: err.message,
+        })
+      );
     }
   };
 
