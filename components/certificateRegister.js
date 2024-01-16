@@ -90,7 +90,7 @@ function certificateRegister({ GenerateOR }) {
               onChange={(e) =>
                 dispatch(setState({ isCheck: e.target.checked }))
               }
-              className="w-4 h-4 text-blue-600 rounded-md focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600"
+              className="w-4 h-4 text-blue-600 rounded focus:ring-blue-600 ring-offset-gray-800 focus:ring-2 bg-gray-700 border-gray-600"
             />
             <label
               htmlFor="default-checkbox"
