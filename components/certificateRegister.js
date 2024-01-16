@@ -3,6 +3,7 @@ import { addCertificate, addCertificateBasedOnUID } from "@/lib/certificate";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { setState, clearState } from "@/redux/features/certificate-slice";
 import { setAlert } from "@/redux/features/alert-slice";
+import { setModal } from "@/redux/features/modal-slice";
 
 function certificateRegister({ GenerateOR }) {
   const dispatch = useAppDispatch();
@@ -10,15 +11,22 @@ function certificateRegister({ GenerateOR }) {
 
   const onSubmit = async () => {
     try {
-      console.log(certificate);
-
+      // console.log(certificate);
       const res = certificate.isCheck
         ? await addCertificateBasedOnUID(certificate)
         : await addCertificate(certificate);
-
-      console.log(res);
+      // console.log(res);
       GenerateOR(res.certificate_number);
       dispatch(clearState());
+      dispatch(
+        setModal({
+          isModalOpen: true,
+          uid: res.certificate_number,
+          name: res.name,
+          sub_title: res.sub_title,
+          date: res.date,
+        })
+      );
     } catch (err) {
       dispatch(
         setAlert({

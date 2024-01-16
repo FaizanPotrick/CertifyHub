@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { fetchCertificate } from "@/lib/certificate";
 import { useAppDispatch } from "@/redux/hooks";
 import { setAlert } from "@/redux/features/alert-slice";
+import { setModal } from "@/redux/features/modal-slice";
 
 function hero() {
   const dispatch = useAppDispatch();
@@ -11,9 +12,17 @@ function hero() {
     e.preventDefault();
     try {
       const res = await fetchCertificate(uid);
-
-      console.log(res);
+      // console.log(res);
       setUid("");
+      dispatch(
+        setModal({
+          isModalOpen: true,
+          uid: res.certificate_number,
+          name: res.name,
+          sub_title: res.sub_title,
+          date: res.date,
+        })
+      );
     } catch (err) {
       dispatch(
         setAlert({
