@@ -5,7 +5,7 @@ import { clearModal } from "@/redux/features/modal-slice";
 import { setAlert } from "@/redux/features/alert-slice";
 import { toPng } from "html-to-image";
 
-function modal() {
+function Modal() {
   const dispatch = useAppDispatch();
   const modal = useAppSelector((state) => state.modal);
 
@@ -98,4 +98,4 @@ function modal() {
   );
 }
 
-export default modal;
+export default Modal;

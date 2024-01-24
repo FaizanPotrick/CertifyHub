@@ -2,7 +2,7 @@ import React from "react";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { deleteAlert } from "@/redux/features/alert-slice";
 
-function alerts() {
+function Alerts() {
   const dispatch = useAppDispatch();
   const alerts = useAppSelector((state) => state.alerts);
 
@@ -61,4 +61,4 @@ function alerts() {
   );
 }
 
-export default alerts;
+export default Alerts;

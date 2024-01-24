@@ -4,7 +4,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { setAlert } from "@/redux/features/alert-slice";
 import { setModal } from "@/redux/features/modal-slice";
 
-function hero() {
+function Hero() {
   const dispatch = useAppDispatch();
   const [uid, setUid] = useState("");
 
@@ -76,4 +76,4 @@ function hero() {
   );
 }
 
-export default hero;
+export default Hero;

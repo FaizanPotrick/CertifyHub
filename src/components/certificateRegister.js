@@ -5,7 +5,7 @@ import { setState, clearState } from "@/redux/features/certificate-slice";
 import { setAlert } from "@/redux/features/alert-slice";
 import { setModal } from "@/redux/features/modal-slice";
 
-function certificateRegister() {
+function CertificateRegister() {
   const dispatch = useAppDispatch();
   const certificate = useAppSelector((state) => state.certificate);
 
@@ -45,7 +45,7 @@ function certificateRegister() {
           UID Generator
         </h3>
         <p className="mt-1 text-center text-gray-400">
-          For UID certificate generation, simply click the 'Generate' button.
+          For UID certificate generation, simply click the &apos;Generate&apos; button.
         </p>
         <form className="w-full flex flex-col gap-4 mt-8" action={onSubmit}>
           <input
@@ -108,4 +108,4 @@ function certificateRegister() {
   );
 }
 
-export default certificateRegister;
+export default CertificateRegister;
