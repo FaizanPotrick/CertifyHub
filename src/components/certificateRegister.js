@@ -18,7 +18,7 @@ function CertificateRegister() {
         setAlert({
           type: "error",
           id: new Date().getTime(),
-          msg: err.message,
+          msg: res.message,
         })
       );
       return;
