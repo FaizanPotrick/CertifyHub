@@ -1,12 +1,11 @@
 "use server";
-import fs from "fs";
+import fs from 'fs';
 import cryptoRandomString from "crypto-random-string";
-import path from "path";
 
 const uid_length = 12;
 const uid_type = "alphanumeric";
 
-const filePath = path.join(process.cwd(), "_data/certificates.json");
+const filePath = process.cwd() + "/_data/certificates.json";
 
 const verifyParameters = (...params) => {
   for (const param of params) {
