@@ -10,24 +10,10 @@ function CertificateRegister() {
   const certificate = useAppSelector((state) => state.certificate);
 
   const onSubmit = async () => {
-    try {
-      // console.log(certificate);
-      const res = certificate.isCheck
-        ? await addCertificateBasedOnUID(certificate)
-        : await addCertificate(certificate);
-      // console.log(res);
-      dispatch(clearState());
-      dispatch(
-        setModal({
-          isModalOpen: true,
-          uid: res.certificate_number,
-          name: res.name,
-          sub_title: res.sub_title,
-          date: res.date,
-          url: window?.location.href,
-        })
-      );
-    } catch (err) {
+    const res = certificate.isCheck
+      ? await addCertificateBasedOnUID(certificate)
+      : await addCertificate(certificate);
+    if (res.error) {
       dispatch(
         setAlert({
           type: "error",
@@ -35,7 +21,20 @@ function CertificateRegister() {
           msg: err.message,
         })
       );
+      return;
     }
+    // console.log(res);
+    dispatch(clearState());
+    dispatch(
+      setModal({
+        isModalOpen: true,
+        uid: res.certificate_number,
+        name: res.name,
+        sub_title: res.sub_title,
+        date: res.date,
+        url: window?.location.href,
+      })
+    );
   };
 
   return (
@@ -45,7 +44,8 @@ function CertificateRegister() {
           UID Generator
         </h3>
         <p className="mt-1 text-center text-gray-400">
-          For UID certificate generation, simply click the &apos;Generate&apos; button.
+          For UID certificate generation, simply click the &apos;Generate&apos;
+          button.
         </p>
         <form className="w-full flex flex-col gap-4 mt-8" action={onSubmit}>
           <input

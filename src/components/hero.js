@@ -10,29 +10,29 @@ function Hero() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await fetchCertificate(uid);
-      // console.log(res);
-      setUid("");
-      dispatch(
-        setModal({
-          isModalOpen: true,
-          uid: res.certificate_number,
-          name: res.name,
-          sub_title: res.sub_title,
-          date: res.date,
-          url: window?.location.href,
-        })
-      );
-    } catch (err) {
+    const res = await fetchCertificate(uid);
+    if (res.error) {
       dispatch(
         setAlert({
           type: "error",
           id: new Date().getTime(),
-          msg: err.message,
+          msg: res.message,
         })
       );
+      return
     }
+    // console.log(res);
+    setUid("");
+    dispatch(
+      setModal({
+        isModalOpen: true,
+        uid: res.certificate_number,
+        name: res.name,
+        sub_title: res.sub_title,
+        date: res.date,
+        url: window?.location.href,
+      })
+    );
   };
   return (
     <section className="flex items-center flex-1">
